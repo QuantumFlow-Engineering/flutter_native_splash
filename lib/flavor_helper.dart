@@ -4,7 +4,7 @@ class _FlavorHelper {
   _FlavorHelper(this._flavor) {
     if (_flavor != null) {
       _androidResFolder = 'android/app/src/$_flavor/res/';
-      _iOSFlavorName = _flavor!.capitalize();
+      _iOSFlavorName = _flavor;
     } else {
       _androidResFolder = 'android/app/src/main/res/';
       _iOSFlavorName = '';
@@ -137,11 +137,11 @@ class _FlavorHelper {
   }
 
   String get iOSAssetsLaunchImageFolder {
-    return 'ios/Runner/Assets.xcassets/LaunchImage$_iOSFlavorName.imageset/';
+    return 'ios/Runner/Assets.xcassets/${_iOSFlavorName}LaunchImage.imageset/';
   }
 
   String get iOSAssetsBrandingImageFolder {
-    return 'ios/Runner/Assets.xcassets/BrandingImage$_iOSFlavorName.imageset/';
+    return 'ios/Runner/Assets.xcassets/${_iOSFlavorName}BrandingImage.imageset/';
   }
 
   String get iOSLaunchScreenStoryboardFile {
@@ -149,7 +149,7 @@ class _FlavorHelper {
   }
 
   String get iOSLaunchScreenStoryboardName {
-    return 'LaunchScreen$_iOSFlavorName';
+    return '${_iOSFlavorName}LaunchScreen';
   }
 
   String get iOSInfoPlistFile {
@@ -157,7 +157,7 @@ class _FlavorHelper {
   }
 
   String get iOSAssetsLaunchImageBackgroundFolder {
-    return 'ios/Runner/Assets.xcassets/LaunchBackground$_iOSFlavorName.imageset/';
+    return 'ios/Runner/Assets.xcassets/${_iOSFlavorName}LaunchBackground.imageset/';
   }
 
   String get iOSLaunchScreenStoryBoardContent {
@@ -171,7 +171,7 @@ class _FlavorHelper {
     if (_iOSFlavorName == null) {
       return 'LaunchImage';
     } else {
-      return 'LaunchImage$_iOSFlavorName';
+      return '${_iOSFlavorName}LaunchImage';
     }
   }
 
@@ -179,7 +179,7 @@ class _FlavorHelper {
     if (_iOSFlavorName == null) {
       return 'BrandingImage';
     } else {
-      return 'BrandingImage$_iOSFlavorName';
+      return '${_iOSFlavorName}BrandingImage';
     }
   }
 
@@ -194,7 +194,7 @@ class _FlavorHelper {
     if (_iOSFlavorName == null) {
       return 'LaunchBackground';
     } else {
-      return 'LaunchBackground$_iOSFlavorName';
+      return '${_iOSFlavorName}LaunchBackground';
     }
   }
 
