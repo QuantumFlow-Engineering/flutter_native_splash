@@ -530,6 +530,10 @@ void _updateInfoPlistFile({
   }
 
   elementFound = true;
+  // QFE: with a fullscreen splash the status bar starts hidden, and the app
+  // has to show it again. A UIScene-based app (iOS 26+) can only do that per
+  // view controller (Flutter's SystemChrome), so the appearance is view
+  // controller based; the app-wide API doesn't work there.
   if (fullscreen) {
     final uIViewControllerBasedStatusBarAppearance =
         dict.children.whereType<XmlElement>().firstWhere(
@@ -545,7 +549,7 @@ void _updateInfoPlistFile({
           },
         );
         dict.children.add(builder.buildFragment());
-        dict.children.add(XmlElement(XmlName((!fullscreen).toString())));
+        dict.children.add(XmlElement(XmlName('true')));
         elementFound = false;
         return XmlElement(XmlName(''));
       },
@@ -559,7 +563,7 @@ void _updateInfoPlistFile({
           .children[index + 1].following
           .firstWhere((element) => element.nodeType == XmlNodeType.ELEMENT);
       uIViewControllerBasedStatusBarAppearanceValue
-          .replace(XmlElement(XmlName('false')));
+          .replace(XmlElement(XmlName('true')));
     }
   }
 
